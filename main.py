@@ -14,7 +14,6 @@ st.set_page_config(
 
 # Function to simulate Valorant RR
 def simulate_rr(winrate, rr_gain_mean, rr_gain_min, rr_gain_max, rr_loss_mean, rr_loss_min, rr_loss_max, rr_std, num_simulations, num_games):
-    np.random.seed(123)  # Set seed for reproducibility
 
     rr_data = pd.DataFrame()
     best_case_rr = float('-inf')
