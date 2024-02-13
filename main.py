@@ -92,6 +92,8 @@ st.sidebar.subheader("Simulation Settings")
 num_games = st.sidebar.slider("Number of Games", 10, 500, 100, 10)
 num_simulations = st.sidebar.slider("Number of Simulations", 10, 1000, 100, 10)
 
+st.sidebar.image("gentlesquare.jpeg", use_column_width=True)
+st.sidebar.write('Created by [Windfall]("https://www.youtube.com/@windfallval")')
 # Simulate RR and get the best and worst outcomes
 rr_simulations, best_case_rr, worst_case_rr = simulate_rr(winrate / 100, rr_gain_mean, rr_gain_min, rr_gain_max,
                                                            rr_loss_mean, rr_loss_min, rr_loss_max, rr_std, num_simulations, num_games)
