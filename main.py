@@ -45,16 +45,20 @@ def simulate_rr(winrate, rr_gain_mean, rr_gain_min, rr_gain_max, rr_loss_mean, r
                                                     "Simulation": [i + 1] * num_games,
                                                     "RR": rr_values})], ignore_index=True)
 
+        # Calculate the total RR at the end of each simulation
+        total_rr_at_end = rr_data.groupby("Simulation")["RR"].last()
+
         # Update best and worst case RR outcomes
-        if max(rr_values) > best_case_rr:
-            best_case_rr = max(rr_values)
+        if total_rr_at_end.max() > best_case_rr:
+            best_case_rr = total_rr_at_end.max()
             best_case_simulation = i + 1
 
-        if min(rr_values) < worst_case_rr:
-            worst_case_rr = min(rr_values)
+        if total_rr_at_end.min() < worst_case_rr:
+            worst_case_rr = total_rr_at_end.min()
             worst_case_simulation = i + 1
 
     return rr_data, best_case_rr, worst_case_rr
+
 
 # Function to add average line to the bell curve plot
 def add_average_line(ax, x_values, y_values, average, color):
@@ -94,6 +98,7 @@ num_simulations = st.sidebar.slider("Number of Simulations", 10, 1000, 100, 10)
 
 st.sidebar.image("gentlesquare.jpeg", use_column_width=True)
 st.sidebar.write('Created by [Windfall](https://www.youtube.com/@windfallval)')
+
 # Simulate RR and get the best and worst outcomes
 rr_simulations, best_case_rr, worst_case_rr = simulate_rr(winrate / 100, rr_gain_mean, rr_gain_min, rr_gain_max,
                                                            rr_loss_mean, rr_loss_min, rr_loss_max, rr_std, num_simulations, num_games)
