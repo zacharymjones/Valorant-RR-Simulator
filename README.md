@@ -1,6 +1,7 @@
 # Valorant RR Simulator
+https://valorant.streamlit.app/
 
-This is a Streamlit web application to simulate RR (Rank Rating) changes in Valorant, a popular competitive shooter game. The simulation is based on customizable parameters for winrate, RR gain, RR loss, and the number of games to be played in each simulation. The application allows users to explore possible RR outcomes, including the best and worst cases.
+This is a Streamlit web application to simulate RR (Rank Rating) changes in Valorant. The simulation is based on customizable parameters for winrate, RR gain, RR loss, and the number of games to be played in each simulation. The application allows users to explore possible RR outcomes, including the best and worst cases.
 ## Features
 
 - **Input Parameters**: The sidebar allows you to adjust simulation parameters, such as winrate, RR gain and loss mean values, RR gain and loss minimum and maximum values, standard deviation, the number of games per simulation, and the number of simulations to run.
